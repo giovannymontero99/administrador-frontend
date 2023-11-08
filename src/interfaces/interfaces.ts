@@ -13,3 +13,11 @@ export interface TipoRespuestaServidor {
     created?: boolean;
     message?: string;
 }
+
+export interface DataProducto { 
+    producto_producto: number; 
+    producto_codigo: string, 
+    producto_nombre:string, 
+    prodcuto_pvp: string ,
+    producto_valor: string
+}

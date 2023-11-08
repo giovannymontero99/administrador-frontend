@@ -97,7 +97,9 @@ function FormComponent() {
 
         <form onSubmit={(e) => handleSubmit(e)} >
           <div className="mb-3">
-            <label htmlFor="productoCodigo" className="form-label" >Codigo Producto</label>
+            <label 
+              htmlFor="productoCodigo" 
+              className="form-label" >Codigo Producto</label>
             <input
               value={formValue.productoCodigo}
               name='productoCodigo'

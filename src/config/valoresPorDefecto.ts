@@ -1,4 +1,4 @@
-import { FormFields, TipoRespuestaServidor } from "../interfaces/interfaces";
+import { DataProducto, FormFields, TipoRespuestaServidor } from "../interfaces/interfaces";
 
 export const valoresInicialesFormularioProducto : FormFields = {
     productoCodigo : "",
@@ -13,3 +13,11 @@ export const valoresInicialesRepuestaServer : TipoRespuestaServidor = {
     created: false,
     message: ''
 }
+
+export const defaultValueDataServer : DataProducto[] = [ {
+    prodcuto_pvp : '',
+    producto_codigo: '',
+    producto_nombre: '',
+    producto_producto: 0,
+    producto_valor: ''
+} ];
