@@ -36,14 +36,14 @@ function GridComponent() {
                     dataTable === null ?
                         null :
                         dataTable.map((product) => {
-                            if (product.producto_producto === 0) return null
+                            if (product._id === null) return null
                             return (
-                                <tr key={product.producto_producto} >
-                                    <td>{product.producto_producto}</td>
-                                    <td>{product.producto_codigo}</td>
-                                    <td>{product.producto_nombre}</td>
-                                    <td>{product.producto_valor}</td>
-                                    <td>{product.prodcuto_pvp}</td>
+                                <tr key={product._id} >
+                                    <td>{product.id}</td>
+                                    <td>{product.codigo}</td>
+                                    <td>{product.title}</td>
+                                    <td>{product.valor_mayorista}</td>
+                                    <td>{product.pvp}</td>
                                 </tr>
                             )
                         })

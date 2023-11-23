@@ -1,8 +1,8 @@
 export interface FormFields {
-    productoCodigo: string;
-    productoNombre: string;
-    productoValorNeto: number;
-    productoValorVenta: number;
+    codigo: string;
+    title: string;
+    valor_mayorista: number;
+    pvp: number;
 }
 
 
@@ -14,10 +14,11 @@ export interface TipoRespuestaServidor {
     message?: string;
 }
 
-export interface DataProducto { 
-    producto_producto: number; 
-    producto_codigo: string, 
-    producto_nombre:string, 
-    prodcuto_pvp: string ,
-    producto_valor: string
+export interface DataProducto {
+    _id: string | null;
+    id: number;
+    codigo: string;
+    title: string;
+    valor_mayorista: number;
+    pvp: number;
 }

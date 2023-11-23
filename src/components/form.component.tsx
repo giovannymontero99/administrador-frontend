@@ -101,8 +101,8 @@ function FormComponent() {
               htmlFor="productoCodigo" 
               className="form-label" >Codigo Producto</label>
             <input
-              value={formValue.productoCodigo}
-              name='productoCodigo'
+              value={formValue.codigo}
+              name='codigo'
               onChange={e => handleFormValues(e)} style={{ width: '20rem' }}
               type="text"
               required
@@ -112,8 +112,8 @@ function FormComponent() {
           <div className="mb-3">
             <label htmlFor="productoNombre" className="form-label">Nombre Producto</label>
             <input
-              value={formValue.productoNombre}
-              name='productoNombre'
+              value={formValue.title}
+              name='title'
               onChange={e => handleFormValues(e)}
               style={{ width: '20rem' }}
               type="text"
@@ -124,8 +124,8 @@ function FormComponent() {
           <div className="mb-3">
             <label htmlFor="productoValorNeto" className="form-label">Valor Neto</label>
             <input
-              value={formValue.productoValorNeto}
-              name='productoValorNeto'
+              value={formValue.valor_mayorista}
+              name='valor_mayorista'
               onChange={e => handleFormValues(e)}
               style={{ width: '20rem' }}
               type="number"
@@ -136,8 +136,8 @@ function FormComponent() {
           <div className="mb-3">
             <label htmlFor="productoValorVenta" className="form-label">Valor Venta</label>
             <input
-              value={formValue.productoValorVenta}
-              name='productoValorVenta'
+              value={formValue.pvp}
+              name='pvp'
               onChange={e => handleFormValues(e)}
               style={{ width: '20rem' }}
               type="number"

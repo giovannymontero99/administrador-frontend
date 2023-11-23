@@ -1,10 +1,10 @@
 import { DataProducto, FormFields, TipoRespuestaServidor } from "../interfaces/interfaces";
 
 export const valoresInicialesFormularioProducto : FormFields = {
-    productoCodigo : "",
-    productoNombre : "",
-    productoValorNeto: 0,
-    productoValorVenta: 0
+    codigo : "",
+    title : "",
+    valor_mayorista: 0,
+    pvp: 0
 }
 
 export const valoresInicialesRepuestaServer : TipoRespuestaServidor = {
@@ -15,9 +15,10 @@ export const valoresInicialesRepuestaServer : TipoRespuestaServidor = {
 }
 
 export const defaultValueDataServer : DataProducto[] = [ {
-    prodcuto_pvp : '',
-    producto_codigo: '',
-    producto_nombre: '',
-    producto_producto: 0,
-    producto_valor: ''
+    _id: null,
+    id : 0,
+    codigo : '',
+    title : '',
+    valor_mayorista : 0,
+    pvp : 0
 } ];
