@@ -22,3 +22,8 @@ export interface DataProducto {
     valor_mayorista: number;
     pvp: number;
 }
+
+export interface LoginData {
+    userLoginForm : string;
+    passwordLoginForm: string;
+}

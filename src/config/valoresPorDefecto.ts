@@ -1,4 +1,4 @@
-import { DataProducto, FormFields, TipoRespuestaServidor } from "../interfaces/interfaces";
+import { DataProducto, FormFields, LoginData, TipoRespuestaServidor } from "../interfaces/interfaces";
 
 export const valoresInicialesFormularioProducto : FormFields = {
     codigo : "",
@@ -22,3 +22,9 @@ export const defaultValueDataServer : DataProducto[] = [ {
     valor_mayorista : 0,
     pvp : 0
 } ];
+
+
+export const loginDataDefault : LoginData = {
+    userLoginForm : '',
+    passwordLoginForm: ''
+}

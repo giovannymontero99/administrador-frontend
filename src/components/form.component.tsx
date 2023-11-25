@@ -3,6 +3,7 @@ import { Alert, Spinner } from 'react-bootstrap';
 import './form.component.css';
 import { valoresInicialesFormularioProducto, valoresInicialesRepuestaServer } from '../config/valoresPorDefecto';
 import { TipoRespuestaServidor } from '../interfaces/interfaces';
+import { requestUtils } from '../services/requestUtils';
 
 
 function FormComponent() {
@@ -13,7 +14,7 @@ function FormComponent() {
 
 
 
-  const sendData = async (url: string, data: any) => {
+  const sendData = async (url: string, data: BodyInit) => {
     const requestInit: RequestInit = {
       method: 'POST',
       headers: {
@@ -32,11 +33,12 @@ function FormComponent() {
   // Evento para envio de datos al servidor
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-
+ 
     setShowSpinner(true);
 
+    const endPoint : string= requestUtils.apiEndpoint;
 
-    sendData("http://localhost:3000/", JSON.stringify(formValue))
+    sendData( endPoint , JSON.stringify(formValue))
       .then((response : TipoRespuestaServidor) => {
         setFormValue({ ...valoresInicialesFormularioProducto })
         if(response.created){

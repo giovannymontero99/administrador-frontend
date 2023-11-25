@@ -1,22 +1,46 @@
-import { FormEvent, useRef } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './Login.component.css';
+import { loginDataDefault } from '../config/valoresPorDefecto';
+import { requestUtils } from '../services/requestUtils';
+
 
 function Login() {
 
-    const emailRef = useRef(null);
-    const passwordRef = useRef(null);
 
-    const handleLoginSubmit = ( event : FormEvent<HTMLFormElement> ):void =>{
+    
+    const [ loginData, setLoginData ] = useState(loginDataDefault)
+
+
+    const handleLoginSubmit = async( event : FormEvent<HTMLFormElement> ): Promise<void> =>{
         event.preventDefault();
-        console.log(emailRef.current.value, passwordRef)
+        const endPoint: string = requestUtils.apiEndpoint + 'login';
+        
+        const response = await fetch(endPoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify( loginData ),
+            credentials: 'include'
+        }  )
+
+        console.log(response);
+
+    }
+
+    const handleValues = ( event: ChangeEvent<HTMLInputElement>)=> {
+        setLoginData({
+            ...loginData, 
+            [ event.target.name ] : event.target.value
+        })
     }
 
 
 
     return (
         <div className="login-container" >
-            <form onSubmit={ e => handleLoginSubmit(e) } className="border" style={{width: '30rem', padding: '2rem'}} >
+            <form onSubmit={ e => handleLoginSubmit(e) } className="border" style={{width: '30rem', padding: '2rem', backgroundColor: 'white'}} >
                 <div className="mb-3">
                     <label
                         htmlFor="userLoginForm"
@@ -24,7 +48,7 @@ function Login() {
                         User
                     </label>
                     <input
-                        ref={emailRef}
+                        onChange={ (e) =>  handleValues(e) }
                         name="userLoginForm"
                         type="text"
                         required
@@ -38,12 +62,13 @@ function Login() {
                         Password
                     </label>
                     <input
-                        name="userLoginForm"
+                        onChange={ (e) =>  handleValues(e) }
+                        name="passwordLoginForm"
                         type="password"
                         required
                         className="form-control"
                         id="passwordLoginForm"
-                        ref={passwordRef} />
+                         />
                 </div>
                 <div className="mb-3">
                     <Button 

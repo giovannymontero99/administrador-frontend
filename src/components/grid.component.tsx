@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { defaultValueDataServer } from "../config/valoresPorDefecto";
+import { requestUtils } from "../services/requestUtils";
 
 
 function GridComponent() {
 
     const [dataTable, setDataTable] = useState(defaultValueDataServer);
+    const [ updateData , setUpdateData ] = useState( true );
 
 
     const getProductsData = async (url: string) => {
@@ -15,12 +17,15 @@ function GridComponent() {
     }
 
     useEffect(() => {
-        getProductsData('http://localhost:3000/all-products');
-    }, []);
+        const endPoint : string = requestUtils.apiEndpoint + 'all-products';
+        getProductsData( endPoint );
+    }, [updateData]);
 
 
 
     return (
+        <>
+        <Button variant="info" onClick={()=> setUpdateData(!updateData) } >Actualizar</Button>
         <Table striped bordered hover >
             <thead>
                 <tr>
@@ -50,6 +55,7 @@ function GridComponent() {
                 }
             </tbody>
         </Table>
+        </>
     )
 }
 
