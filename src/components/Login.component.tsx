@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import './Login.component.css';
 import { loginDataDefault } from '../config/valoresPorDefecto';
 import { requestUtils } from '../services/requestUtils';
+import { Navigate } from 'react-router-dom';
 
 
 function Login() {
@@ -10,6 +11,7 @@ function Login() {
 
     
     const [ loginData, setLoginData ] = useState(loginDataDefault)
+    const [ isAuthorized, setIsAuthorized ] = useState( false )  
 
 
     const handleLoginSubmit = async( event : FormEvent<HTMLFormElement> ): Promise<void> =>{
@@ -25,7 +27,12 @@ function Login() {
             credentials: 'include'
         }  )
 
-        console.log(response);
+
+        if(response.status === 202) {
+            setIsAuthorized(true);
+        }else{
+            setIsAuthorized(false);
+        }
 
     }
 
@@ -36,7 +43,11 @@ function Login() {
         })
     }
 
+    if( isAuthorized ){
+        return( <Navigate to='/' ></Navigate> )
+    }
 
+    
 
     return (
         <div className="login-container" >

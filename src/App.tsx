@@ -16,16 +16,20 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient} >
-      <Routes>
-        <Route path='/login' element={<Login></Login>} />
-        <Route path='*' element={<NotFound />} />
+      <Routes >
+        <Route path='/login' element={<Login />} />
+        <Route path='*' element={ <NotFound /> } />
         <Route
           path='/'
-          element={
+          children={
+            <Route path='/' element={
               < Suspense fallback={null} >
                 <PrivateRoute />
               </Suspense>
-          } />
+            } />
+          }
+          />
+        
       </Routes>
 
       </QueryClientProvider>
